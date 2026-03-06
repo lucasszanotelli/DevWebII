@@ -1,0 +1,31 @@
+<h2>Lista de Compras v2</h2>
+
+<!-- ===== Versão 1: ngFor + ngIf ===== -->
+<h3>Com ngFor e ngIf</h3>
+<ul>
+    <li *ngFor="let produto of produtos">
+        <span *ngIf="produto.qtd < 2" class="vermelho">
+            {{ produto.nome }} - Qtd: {{ produto.qtd }}
+        </span>
+        <span *ngIf="produto.qtd >= 2 && produto.qtd <= 3" class="laranja">
+            {{ produto.nome }} - Qtd: {{ produto.qtd }}
+        </span>
+        <span *ngIf="produto.qtd > 3" class="verde">
+            {{ produto.nome }} - Qtd: {{ produto.qtd }}
+        </span>
+    </li>
+</ul>
+
+<!-- ===== Versão 2: @for + @if ===== -->
+<h3>Com &#64;for e &#64;if</h3>
+<ul>
+    @for (produto of produtos; track $index) {
+    <li>
+        @if (produto.qtd < 2) { <span class="vermelho">{{ produto.nome }} - Qtd: {{ produto.qtd }}</span>
+            } @else if (produto.qtd <= 3) { <span class="laranja">{{ produto.nome }} - Qtd: {{ produto.qtd }}</span>
+                } @else {
+                <span class="verde">{{ produto.nome }} - Qtd: {{ produto.qtd }}</span>
+                }
+    </li>
+    }
+</ul>
