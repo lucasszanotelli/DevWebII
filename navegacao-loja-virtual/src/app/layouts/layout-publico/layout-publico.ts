@@ -1,0 +1,17 @@
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet, RouterLink} from '@angular/router';
+
+@Component({
+  selector: 'app-layout-publico',
+  imports: [RouterOutlet, RouterLink],
+  templateUrl: './layout-publico.html',
+  styleUrl: './layout-publico.css',
+})
+export class LayoutPublico {
+  private readonly router = inject(Router);
+
+  irParaHome() {
+    this.router.navigate(['/home']);
+  }
+
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -10,12 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 export class Usuario {
   id: string | null = null;
 
-  constructor(private route: ActivatedRoute) {}
-  
+  constructor(private route: ActivatedRoute, private router: Router) { }
+
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
   }
 
+  irParaHome() {
+    this.router.navigate(['/home']);
+  }
 }
