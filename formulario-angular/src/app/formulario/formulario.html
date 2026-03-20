@@ -1,0 +1,72 @@
+<form #propForm="ngForm" (ngSubmit)="enviar()">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" [(ngModel)]="nome" #popNome="ngModel" minlength="3" pattern="^[a-zA-Z ]+$" required>
+    
+    @if (popNome.invalid && (popNome.dirty || popNome.touched)) {
+        <br>
+        <span>Campo obrigatório, use mais que 3 caracteres alpha numericos</span>
+    }
+
+    <h3>Valores das validações</h3>
+    <p>Valor do campo: {{nome}}</p>
+    <p>Campo é válido: {{popNome.valid}}</p>
+    <p>Campo é alterado: {{popNome.dirty}}</p>
+    <p>Campo é tocado: {{popNome.touched}}</p>
+
+    <hr>
+
+    <h3>Select</h3>
+    <select name="filme" id="filme" [(ngModel)]="filme" #popFilme="ngModel" required="">
+        <option value="O lobo Solitario">O lobo Solitario</option>
+        <option value="Código do Silêncio">Código do Silêncio</option>
+        <option value="Fúria Silenciosa">Fúria Silenciosa</option>
+        <option value="Comando Delta">Comando Delta</option>    
+    </select>
+
+    <h3>Valores das validações</h3>
+    <p>Valor do campo: {{filme}}</p>
+    <p>Campo é válido: {{popFilme.valid}}</p>
+    <p>Campo é alterado: {{popFilme.dirty}}</p>
+    <p>Campo é tocado: {{popFilme.touched}}</p>
+
+    <hr>
+
+    <h3>Checkbox</h3>
+    <input type="checkbox" id="isMaiorDeIdade" name="isMaiorDeIdade" [(ngModel)]="isMaiorDeIdade" #popIsMaiorDeIdade="ngModel" required>
+    <label for="isMaiorDeIdade">Sou maior de idade</label>
+
+
+    <h3>Valores das validações</h3>
+    <p>Valor do campo: {{isMaiorDeIdade}}</p>
+    <p>Campo é válido: {{popIsMaiorDeIdade.valid}}</p>
+    <p>Campo é alterado: {{popIsMaiorDeIdade.dirty}}</p>
+    <p>Campo é tocado: {{popIsMaiorDeIdade.touched}}</p>
+
+    <hr>
+
+    <h3>Input Radio</h3>
+    <input type="radio" id="masculino" name="genero" value="Masculino" [(ngModel)]="genero" #popGenero="ngModel">
+    <label for="masculino">Masculino</label>
+    <input type="radio" id="feminino" name="genero" value="Feminino" [(ngModel)]="genero" #popGenero2="ngModel">
+    <label for="feminino">Feminino</label>
+
+    <h3>Valores das validações</h3>
+    <p>Valor do campo: {{genero}}</p>
+    <p>Campo é válido: {{popGenero.valid}}</p>
+    <p>Campo é alterado: {{popGenero.dirty}}</p>
+    <p>Campo é tocado: {{popGenero.touched}}</p>
+
+    <hr>
+    
+    <h3>Validação do Formulário</h3>
+    <p>Formulário é válido: {{propForm.valid}}</p>
+    <p>Formulário é alterado: {{propForm.dirty}}</p>
+    <p>Formulário é tocado: {{propForm.touched}}</p>
+
+    <hr>
+
+    <button type="submit" [disabled]="!propForm.valid">Enviar isvalid</button>
+    <!-- ou, o mais seguro:-->
+    <button type="button" (click)="enviar1(propForm)">Enviar função</button>
+</form>
+
