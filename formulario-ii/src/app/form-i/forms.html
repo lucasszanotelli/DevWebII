@@ -1,0 +1,9 @@
+<h1>form control - I</h1>
+
+<form>  
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" [formControl]="nome">
+    <button (click)="limparNome1()">Limpar</button>
+
+    <p>Valor do nome = {{ nome.value }}</p>
+</form>

@@ -1,0 +1,24 @@
+<hr>
+<h1>form control - III</h1>
+<form [formGroup]="formulario">
+    <label for="novoTelefone">Novo Telefone:</label>
+    <input type="text" id="novoTelefone" formControlName="novoTelefone">
+    <button type="button" (click)="addTelefone()">Adicionar</button>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+        @for(telefone of telefones.controls; track $index) {
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ telefone.value }}</td>
+                <td><button type="button" (click)="removerTelefone($index)">Remover</button></td>
+            </tr>
+        }
+    </table>
+
+
+</form>
