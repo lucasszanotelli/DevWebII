@@ -1,23 +1,44 @@
 <hr>
-<h1>form control - IV</h1>
-<h1>form Bilder</h1>
+<h1>form control - V</h1>
+<h1>form Bilder - COM VALIDAÇÃO</h1>
 <form [formGroup]="formulario">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" formControlName="nome"><br>
+    @if(formulario.get('nome')?.invalid && formulario.get('nome')?.touched) {
+    <div class="erros">
+        @if(nome?.errors?.['required']) {<span style="color:red">Nome obrigatório</span>}
+        <!-- usa a função get -->
+        @if(formulario.get('nome')?.errors?.['minlength']) {<span style="color:red">Nome deve ter pelo menos 3
+            caracteres</span>}
+    </div>
+    }
 
     <p>Valor do nome: {{ formulario.get('nome')?.value }}</p>
-    <button type="button" (click)="limparNome()">Limpar</button>
+    <button type="button" (click)="limparNome()">Limpar Nome</button>
+    <br><br>
 
     <div formGroupName="endereco">
         <label for="logradouro">Logradouro:</label>
         <input type="text" id="logradouro" formControlName="logradouro"><br>
+        @if(endereco?.errors?.['bairroNoLogradouro'] && (endereco?.get('logradouro')?.touched ||
+        endereco?.get('bairro')?.touched)) {
+        <span style="color:red">Não digite o bairro dentro do logradouro. Use o campo Bairro.</span>
+        }
+        <br><br>
 
         <label for="numero">Número:</label>
         <input type="text" id="numero" formControlName="numero"><br>
-        <button type="button" (click)="limparNumero()">Limpar</button>
-
+        
+        @if(numero?.errors?.['required'] && numero?.touched) {
+            <span style="color:red">Número é obrigatório</span><br>
+        }
+        @if(numero?.errors?.['numeroInvalido'] && numero?.touched) {
+            <span style="color:red">Digite um número válido maior que zero</span><br>
+        }
+        <button type="button" (click)="limparNumero()">Limpar numero</button><br> <br>
+        
         <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" formControlName="bairro"><br>
+        <input type="text" id="bairro" formControlName="bairro"><br><br>
     </div>
     <button type="button" (click)="limparEndereco()">Limpar Endereço</button>
 
