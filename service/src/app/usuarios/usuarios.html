@@ -1,0 +1,8 @@
+<h1>Usuarios (simples)</h1>
+
+<ul>
+    @for(user of usuarios(); track user.id){
+        <li>{{user.id}}: {{user.nombre}} | {{user.email}}</li>
+    }
+
+</ul>

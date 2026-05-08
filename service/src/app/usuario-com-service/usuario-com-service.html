@@ -1,0 +1,9 @@
+<h1>Usuarios (com service)</h1>
+
+<ul>
+    @for(user of usuariosComService(); track user.id){
+        <li>{{user.id}}: {{user.nombre}} | {{user.email}}</li>
+    }
+
+</ul>
+
